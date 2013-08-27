@@ -10,6 +10,8 @@
 
 @interface GAViewController ()
 
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+
 @end
 
 @implementation GAViewController
