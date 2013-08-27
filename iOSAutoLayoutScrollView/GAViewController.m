@@ -10,6 +10,8 @@
 
 @interface GAViewController ()
 
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+
 @end
 
 @implementation GAViewController
@@ -24,6 +26,18 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    CGPoint originalScrollViewContentOffset = self.scrollView.contentOffset;
+    self.scrollView.contentOffset = CGPointZero;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.scrollView.contentOffset = originalScrollViewContentOffset;
+    });
 }
 
 @end
